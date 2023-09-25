@@ -1,4 +1,8 @@
-const express = require("express");
+// const express = require("express");
+import express from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
@@ -6,6 +10,8 @@ app.get("/", (req, res) => {
     res.send("<h1>Welcome to Job Portal</h1>");
 });
 
-app.listen(8080, () => {
-    console.log('Server is running')
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`Server is running in ${process.env.DEV_MODE} mode on port ${PORT}`)
 });
