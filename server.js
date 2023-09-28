@@ -1,4 +1,3 @@
-// const express = require("express");
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -18,9 +17,6 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.use('/api/v1/test', testRoutes);
-// app.get("/", (req, res) => {
-//     res.send("<h1>Welcome to Job Portal</h1>");
-// });
 
 const PORT = process.env.PORT || 8080;
 
