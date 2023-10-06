@@ -4,6 +4,7 @@ import {
   getAllJobsController,
   updateJobController,
   deleteJobController,
+  jobStatsController,
 } from '../controllers/jobsController.js';
 import userAuth from '../middlewares/authMiddleware.js';
 
@@ -16,5 +17,7 @@ router.get('/get-jobs', userAuth, getAllJobsController);
 router.patch('/update-job/:id', userAuth, updateJobController);
 
 router.delete('/delete-job/:id', userAuth, deleteJobController);
+
+router.get("/job-stats", userAuth, jobStatsController);
 
 export default router;
