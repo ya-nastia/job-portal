@@ -3,6 +3,9 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
 import 'express-async-errors';
+import helmet from 'helmet';
+import xss from 'xss-clean';
+import mongoSanitize from 'express-mongo-sanitize';
 
 import connectDB from './config/db.js';
 import errorMiddleware from './middlewares/errorMiddleware.js';
@@ -16,7 +19,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
+ 
+app.use(helmet());
+app.use(xss());
+app.use(mongoSanitize());
 app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
