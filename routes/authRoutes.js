@@ -11,6 +11,12 @@ const limiter = rateLimit({
 
 const router = express.Router();
 
+router.post('/register', limiter, registerController);
+
+router.post('/login', limiter, loginController)
+
+export default router;
+
 /**
  * @swagger
  * components:
@@ -81,8 +87,6 @@ const router = express.Router();
  *          description: internal server error
  */
 
-router.post('/register', limiter, registerController);
-
 /**
  * @swagger
  * /api/v1/auth/login:
@@ -105,7 +109,3 @@ router.post('/register', limiter, registerController);
  *      500:
  *        description: something went wrong
  */
-
-router.post('/login', limiter, loginController)
-
-export default router;

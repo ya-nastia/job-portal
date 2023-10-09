@@ -4,6 +4,17 @@ import userAuth from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
+router.put('/update-user', userAuth, updateUserController);
+
+export default router;
+
+/**
+ *  @swagger
+ *  tags:
+ *    name: User
+ *    description: User apis
+ */
+
 /**
  * @swagger
  * /api/v1/user/update-user:
@@ -53,13 +64,9 @@ const router = express.Router();
  *                 location: Moscow
  *               token: <your-auth-token>
  *       400:
- *         description: Bad Request - Please provide all required fields
+ *         description: Bad Request - Please provide all fields
  *       401:
  *         description: Unauthorized - Auth Failed
  *       500:
  *         description: Internal Server Error
  */
-
-router.put('/update-user', userAuth, updateUserController);
-
-export default router;

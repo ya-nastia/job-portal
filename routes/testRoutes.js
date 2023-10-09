@@ -4,6 +4,17 @@ import userAuth from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
+router.post('/test-post', userAuth, testPostController);
+
+export default router;
+
+/**
+ *  @swagger
+ *  tags:
+ *    name: Test
+ *    description: Test apis
+ */
+
 /**
  * @swagger
  * /api/v1/test/test-post:
@@ -36,7 +47,3 @@ const router = express.Router();
  *       500:
  *         description: Internal Server Error
  */
-
-router.post('/test-post', userAuth, testPostController);
-
-export default router;
