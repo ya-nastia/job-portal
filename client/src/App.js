@@ -1,8 +1,10 @@
+import HomePage from "./pages/HomePage/HomePage";
+
 function App() {
   return (
-    <h1>
-      Welcome to Job Portal App
-    </h1>
+    <div>
+      <HomePage />
+    </div>
   );
 }
 
