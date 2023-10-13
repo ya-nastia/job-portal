@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './RegisterPage.scss';
+import InputFrom from '../../components/InputForm/InputForm';
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -23,69 +24,38 @@ const RegisterPage = () => {
       <form className="register-card card p-2" onSubmit={handleSubmit}>
         <h5 className='text-center mt-2'>Register</h5>
 
-        <div className="mb-3">
-
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-
-          <input
-            type="text"
-            className="form-control"
-            name="name"
+        <InputFrom
+            htmlFor="name"
+            labelText={"Name"}
+            type={"text"}
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            handleChange={(e) => setName(e.target.value)}
+            name="name"
           />
-
-        </div>
-
-        <div className="mb-3">
-
-          <label htmlFor="lastName" className="form-label">
-            Last Name
-          </label>
-
-          <input
-            type="text"
-            className="form-control"
-            name="lastName"
+          <InputFrom
+            htmlFor="lastName"
+            labelText={"Last Name"}
+            type={"text"}
             value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            handleChange={(e) => setLastName(e.target.value)}
+            name="lastName"
           />
-
-        </div>
-
-        <div className="mb-3">
-
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-
-          <input
-            type="email"
-            className="form-control"
-            name="email"
+          <InputFrom
+            htmlFor="email"
+            labelText={"Email"}
+            type={"email"}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            handleChange={(e) => setEmail(e.target.value)}
+            name="email"
           />
-
-        </div>
-
-        <div className="mb-3">
-
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-
-          <input
-            type="password"
-            className="form-control"
-            name="password"
+          <InputFrom
+            htmlFor="password"
+            labelText={"Password"}
+            type={"password"}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            handleChange={(e) => setPassword(e.target.value)}
+            name="password"
           />
-
-        </div>
 
         <div className="d-flex flex-column justify-content-between">
           <button type="submit" className="btn btn-primary">
