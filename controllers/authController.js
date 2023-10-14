@@ -39,17 +39,17 @@ export const loginController = async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    next('Please provide all fields');
+    return next('Please provide all fields');
   }
 
-  const user = await userModel.findOne({email}).select('+password');
+  const user = await userModel.findOne({ email }).select('+password');
   if (!user) {
-    next('Invalid username or password');
+    return next('Invalid username or password');
   }
 
   const isMatch = await user.comparePassword(password);
   if (!isMatch) {
-    next('Invalid username or password');
+    return next('Invalid username or password');
   }
 
   user.password = undefined;
@@ -59,5 +59,5 @@ export const loginController = async (req, res, next) => {
     message: 'Login successfully',
     user,
     token,
-  })
+  });
 };

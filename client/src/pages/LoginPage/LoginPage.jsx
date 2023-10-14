@@ -36,7 +36,7 @@ const LoginPage = () => {
 
     } catch (error) {
       dispatch(hideLoading());
-      toast.error("Invalid Credintials. Please try again!");
+      toast.error(error.response.data.message || "Invalid Credintials. Please try again!");
       console.log(error);
     }
   };
