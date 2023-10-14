@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { showLoading, hideLoading } from '../../store/features/alertSlice';
+import { toast } from 'react-toastify';
 import InputFrom from '../../components/InputForm/InputForm';
 import Spinner from '../../components/Spinner/Spinner';
 
@@ -29,13 +30,13 @@ const LoginPage = () => {
       if (data.success) {
         dispatch(hideLoading());
         localStorage.setItem("token", data.token);
-        alert("Login Successfully");
+        toast.success("Login Successfully");
         navigate("/dashboard");
       }
 
     } catch (error) {
       dispatch(hideLoading());
-      alert("Invalid Credintials. Please try again!");
+      toast.error("Invalid Credintials. Please try again!");
       console.log(error);
     }
   };

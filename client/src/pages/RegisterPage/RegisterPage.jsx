@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { showLoading, hideLoading } from '../../store/features/alertSlice';
 import InputFrom from '../../components/InputForm/InputForm';
 import Spinner from '../../components/Spinner/Spinner';
@@ -23,7 +24,7 @@ const RegisterPage = () => {
 
     try {
       if (!name || !lastName || !email || !password) {
-        return alert("Please Provide All Fields");
+        return toast.error("Please Provide All Fields");
       }
 
       dispatch(showLoading());
@@ -38,13 +39,13 @@ const RegisterPage = () => {
       dispatch(hideLoading());
 
       if (data.success) {
-        alert("Registered Successfully");
+        toast.success("Registered Successfully");
         navigate("/login");
       }
 
     } catch (error) {
       dispatch(hideLoading());
-      alert("Invalid Form Details. Please Try Again!");
+      toast.error("Invalid Form Details. Please Try Again!");
       console.log(error);
     }
   };
