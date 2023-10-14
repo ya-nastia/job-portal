@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import './RegisterPage.scss';
 import InputFrom from '../../components/InputForm/InputForm';
 
@@ -9,11 +10,36 @@ const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      console.log(name, email, password, lastName);
+      if (!name || !lastName || !email || !password) {
+        return alert("Please Provide All Fields");
+      }
+
+      dispatch(showLoading());
+
+      const { data } = await axios.post("/api/v1/auth/register", {
+        name,
+        lastName,
+        email,
+        password,
+      });
+
+      dispatch(hideLoading());
+
+      if (data.success) {
+        alert("Registered Successfully");
+        navigate("/login");
+      }
+
     } catch (error) {
+      dispatch(hideLoading());
+      alert("Invalid Form Details. Please Try Again!");
       console.log(error);
     }
   };
