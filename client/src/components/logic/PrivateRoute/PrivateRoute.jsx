@@ -13,16 +13,19 @@ const PrivateRoute = ({ children }) => {
   const getUser = async () => {
     try {
       dispatch(showLoading());
+
       const { data } = await axios.post(
         "/api/v1/user/get-user",
-        { token: localStorage.getItem("token") },
+        {},
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
+
       dispatch(hideLoading());
+
       if (data.success) {
         dispatch(setUser(data.data));
       } else {

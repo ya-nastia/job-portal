@@ -21,7 +21,7 @@ export const updateUserController = async (req, res, next) => {
 
 export const getUserController = async (req, res, next) => {
   try {
-    const user = await userModel.findById({ _id: req.body.user.userId });
+    const user = await userModel.findById({ _id: req.user.userId });
     user.password = undefined;
     
     if (!user) {
