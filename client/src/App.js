@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import PrivateRoute from "./components/logic/PrivateRoute/PrivateRoute";
 import PublicRoute from "./components/logic/PublicRoute/PublicRoute";
 import { ToastContainer } from "react-toastify";
@@ -42,7 +43,7 @@ function App() {
             path="/dashboard"
             element={
               <PrivateRoute>
-                <div>Dashboard Page</div>
+                <DashboardPage />
               </PrivateRoute>
             }
           />
