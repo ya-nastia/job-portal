@@ -1,14 +1,17 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import { toast } from "react-toastify";
-import "./Layout.css";
-import { menuItems } from "../../../config/menu-items";
+import "./Layout.scss";
+import { menuItems } from "../../config/menu-items";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const sidebarMenu = userMenu;
+  const { user } = useSelector((state) => state.auth);
+
+  const sidebarMenu = menuItems;
 
   const handleLogout = () => {
     localStorage.clear();
@@ -27,7 +30,7 @@ const Layout = ({ children }) => {
 
           <hr />
 
-          <p className="text-center text-warning">Welcome : username</p>
+          <p className="text-center text-warning">Welcome : {user.name} {user.lastName}</p>
 
           <hr />
 
@@ -47,7 +50,7 @@ const Layout = ({ children }) => {
               <i className="fa-solid fa-right-from-bracket"></i>
               <Link to="/login">Logout</Link>
             </div>
-            
+
           </div>
         </div>
 
