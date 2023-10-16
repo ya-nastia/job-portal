@@ -61,51 +61,104 @@ export default router;
  *  @swagger
  *  tags:
  *    name: Auth
- *    description: authentication apis
+ *    description: Authentication apis
  */
 
 /**
  * @swagger
  * /api/v1/auth/register:
  *    post:
- *      summary: register new user
+ *      summary: Register new user
  *      tags: [Auth]
  *      requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: John
+ *               lastName:
+ *                 type: string
+ *                 example: Doe
+ *               email:
+ *                 type: string
+ *                 example: johndoe@gmail.com
+ *               password:
+ *                 type: string
+ *                 example: johndoe123
  *      responses:
- *        200:
- *          description: user created successfully
+ *        201:
+ *          description: User created successfully
  *          content:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/User'
+ *                type: object
+ *                properties:
+ *                  success:
+ *                    type: boolean
+ *                    example: true
+ *                  message:
+ *                    type: string
+ *                    example: User created successfully
+ *                  user:
+ *                    type: object
+ *                    properties:
+ *                      name:
+ *                        type: string
+ *                        example: John
+ *                      lastName:
+ *                        type: string
+ *                        example: Doe
+ *                      email:
+ *                        type: string
+ *                        example: johndoe@gmail.com
+ *                      location:
+ *                        type: string
+ *                        example: Russia
+ *                  token:
+ *                    type: string
  *        500:
- *          description: internal server error
+ *          description: Internal server error
  */
 
 /**
  * @swagger
  * /api/v1/auth/login:
  *  post:
- *    summary: login page
+ *    summary: Login user
  *    tags: [Auth]
  *    requestBody:
  *      required: true
  *      content:
  *        application/json:
  *          schema:
- *            $ref: '#/components/schemas/User'
+ *            properties:
+ *               email:
+ *                 type: string
+ *                 example: johndoe4@gmail.com
+ *               password:
+ *                 type: string
+ *                 example: johndoe123
  *    responses:
  *      200:
- *        description: login successfully
+ *        description: Login successfully
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/User'
+ *              type: object
+ *              properties:
+ *                success:
+ *                  type: boolean
+ *                  example: true
+ *                message:
+ *                  type: string
+ *                  example: Login successfully
+ *                user:
+ *                  $ref: '#/components/schemas/User'
+ *                token:
+ *                  type: string
  *      500:
- *        description: something went wrong
+ *        description: Internal server error
  */
