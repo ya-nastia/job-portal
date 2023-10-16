@@ -85,12 +85,12 @@ export const updateJobController = async (req, res, next) => {
     return;
   }
 
-  const updateJob = await jobsModel.findOneAndUpdate({ _id: id }, req.body, {
+  const updatedJob = await jobsModel.findOneAndUpdate({ _id: id }, req.body, {
     new: true,
     runValidators: true,
   });
   
-  res.status(200).json({ updateJob });
+  res.status(200).json({ updatedJob });
 };
 
 export const deleteJobController = async (req, res, next) => {
