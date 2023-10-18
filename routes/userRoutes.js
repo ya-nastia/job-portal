@@ -72,3 +72,31 @@ export default router;
  *       500:
  *         description: Internal Server Error
  */
+
+/**
+ * @swagger
+ * /api/v1/user/get-user:
+ *   post:
+ *     summary: Get user information
+ *     tags: [User]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 user:
+ *                   $ref: '#/components/schemas/User'
+ *       400:
+ *         description: Bad Request - Please provide all fields
+ *       401:
+ *         description: Unauthorized - Auth Failed
+ *       500:
+ *         description: Internal Server Error
+ */

@@ -2,9 +2,11 @@ import userModel from "../models/userModel.js";
 
 export const updateUserController = async (req, res, next) => {
   const { name, email, lastName, location } = req.body;
+
   if (!name || !email || !lastName || !location) {
     next("Please Provide All Fields");
   }
+
   const user = await userModel.findOne({ _id: req.user.userId });
   user.name = name;
   user.lastName = lastName;
@@ -38,7 +40,7 @@ export const getUserController = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: "auth error",
+      message: "Auth error",
       success: false,
       error: error.message,
     });
